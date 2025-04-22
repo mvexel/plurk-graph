@@ -1,0 +1,5 @@
+.env
+*.db
+*.png
+.venv/
+.DS_Store
