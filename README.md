@@ -24,7 +24,7 @@ This project retrieves data from Plurk's API and generates stacked bar chart vis
 
 2. Run the main script:
    ```bash
-   python plurk_strreamgraph.py
+   python plurk_data_collector.py
    ```
 
 3. During first run:
@@ -65,4 +65,4 @@ The SQLite database (`plurks.db`) contains 3 tables:
 - For plotting issues, try reducing the scale factor
 
 ## Example Output
-![Example Streamgraph](example_plot.png)
+![Example Activity Visualization](combined_activity_tab10.png)
