@@ -70,8 +70,13 @@ def setup_sqlite() -> None:
     conn.commit()
 
 
-def get_consumer() -> dict:
+def get_consumer() -> OAuth1Session:
+    """
+    gets consumer session
 
+    Returns:
+        OAuth1Session: consumer
+    """
     oauth = OAuth1Session(
         CONSUMER_KEY, client_secret=CONSUMER_SECRET, callback_uri="oob"
     )
@@ -100,7 +105,6 @@ def get_consumer() -> dict:
         verifier=verifier,
     )
     tokens = oauth.fetch_access_token(access_token_url)
-    print(tokens)
     consumer = OAuth1Session(
         CONSUMER_KEY,
         client_secret=CONSUMER_SECRET,
@@ -126,8 +130,6 @@ def get_timeline(consumer: OAuth1Session, offset: datetime.timestamp = None) -> 
 
     params = {"minimal_data": "1", "limit": TIMELINE_LIMIT}
     if offset is not None:
-        # Convert offset to ISO format if required by the API.
-        # Check the API documentation if it expects ISO formatted strings or another format.
         offset_str = datetime.fromtimestamp(float(offset)).isoformat()
         print(f"getting timeline with offset {offset_str}")
         params["offset"] = offset_str
@@ -148,6 +150,16 @@ def get_timeline(consumer: OAuth1Session, offset: datetime.timestamp = None) -> 
 
 
 def get_replies(consumer: OAuth1Session, plurk_id: int):
+    """
+    gets replies from plurk api
+
+    Args:
+        consumer (OAuth1Session): consumer
+        plurk_id (int): plurk id
+
+    Returns:
+        list: replies
+    """
     RESPONSES_URL = "https://www.plurk.com/APP/Responses/get"
     response = consumer.request(
         "GET",
@@ -163,6 +175,15 @@ def get_replies(consumer: OAuth1Session, plurk_id: int):
 
 
 def own_profile(consumer: OAuth1Session):
+    """
+    gets own profile from plurk api
+
+    Args:
+        consumer (OAuth1Session): consumer
+
+    Returns:
+        dict: own profile
+    """
     OWN_PROFILE_URL = "https://www.plurk.com/APP/Profile/getOwnProfile"
 
     response = consumer.request(
@@ -182,7 +203,7 @@ def main():
     print("getting consumer")
     consumer = get_consumer()
 
-    # get own profile
+    # get own profile - we're not using this
     print("getting own profile")
     my_profile = own_profile(consumer)
 
