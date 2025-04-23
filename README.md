@@ -1,11 +1,11 @@
-# Plurk Streamgraph Visualization
+# Plurk Activity Visualization
 
-This project retrieves data from Plurk's API and generates streamgraph visualizations of posting activity.
+This project retrieves data from Plurk's API and generates stacked bar chart visualizations of posting activity over time.
 
 ## Features
 - Fetches Plurk timeline data and replies
 - Stores data in SQLite database (`plurks.db`)
-- Generates combined streamgraph plots of posting activity
+- Generates combined stacked bar charts of posting activity
 - Multiple colormap options for visualizations
 
 ## Prerequisites
@@ -35,7 +35,7 @@ This project retrieves data from Plurk's API and generates streamgraph visualiza
 ## Generating Visualizations
 To create default visualization:
 ```bash
-python plot.py
+python plurk_barchart.py
 ```
 
 This will generate `combined_activity_tab20.png` using:
