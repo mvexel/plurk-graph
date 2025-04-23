@@ -7,11 +7,18 @@ import numpy as np
 
 def create_combined_plot(colormap_name="tab20", scale_factor=2.0):
     """
-    Create a combined plot of plurks and replies with the specified colormap.
+    Create a monthly stacked bar chart of combined plurk and reply activity.
 
     Args:
-        colormap_name: Name of the matplotlib colormap to use
-        scale_factor: Factor to scale the plot size (default: 2.0 for twice as big)
+        colormap_name: Name of matplotlib colormap (default: 'tab20')
+        scale_factor: Scaling factor for output size/resolution (default: 2.0)
+    
+    Outputs:
+        Saves PNG file named 'combined_activity_{colormap_name}.png' showing:
+        - Monthly activity grouped by user
+        - Stacked bars showing relative contributions
+        - Automatic time axis handling
+        - Properly scaled for readability
     """
     # Connect to your SQLite database
     conn = sqlite3.connect("plurks.db")

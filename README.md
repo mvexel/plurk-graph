@@ -3,10 +3,15 @@
 This project retrieves data from Plurk's API and generates stacked bar chart visualizations of posting activity over time.
 
 ## Features
-- Fetches Plurk timeline data and replies
-- Stores data in SQLite database (`plurks.db`)
-- Generates combined stacked bar charts of posting activity
-- Multiple colormap options for visualizations
+- Fetches Plurk timeline data and replies via API
+- Stores data in SQLite database (`plurks.db`) with proper schema
+- Generates monthly stacked bar charts showing:
+  - Posting activity by user
+  - Combined plurks and replies
+  - Time-based trends
+- Multiple colormap options for better visualization
+- Automatic handling of missing months
+- Configurable chart size and resolution
 
 ## Prerequisites
 - Python 3.x
